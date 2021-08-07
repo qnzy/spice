@@ -1,0 +1,20 @@
+*test for ne555 model
+.include ne555.mod
+
+x555 0 trig out resetn ctrl thr dis vcc ne555
+vsup vcc 0 5
+*vrst resetn 0 PWL(0 0 1u 0 1.001u 5)
+r3 resetn vcc 1
+r1 vcc dis 10k
+r2 dis thr 10k
+r2b thr trig 0.01
+c1 thr 0 20p
+
+.control
+tran 1n 100u
+save all
+save V(trig) V(out) V(resetn) V(ctrl) V(thr) V(dis) V(vcc)
+save V(x555.vcc_div_3) V(x555.ff_set) V(x555.ff_reset) V(x555.ff_outn)
+plot V(out)
+plot V(dis) V(trig)
+.endc
