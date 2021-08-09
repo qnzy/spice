@@ -1,4 +1,4 @@
-* spice model for a NE555 timer
+* ngspice model for a NE555 timer
 .subckt ne555 gnd trig out resetn ctrl thr dis vcc
 .param rdis = 10
 .param rdiv = 100k
